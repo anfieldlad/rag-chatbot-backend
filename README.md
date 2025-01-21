@@ -1,9 +1,10 @@
 # RAG Chatbot Backend
 
 ## Description
-A FastAPI-based backend for a chatbot that uses OpenAI's GPT model to generate responses and MongoDB for storing knowledge. The project is containerized with Docker for easy deployment.
+A FastAPI-based backend for a Retrieval-Augmented Generation (RAG) chatbot that combines OpenAI's GPT model for generating responses with MongoDB for efficient knowledge retrieval. The project is containerized with Docker for easy deployment.
 
 ## Features
+- Retrieval-Augmented Generation (RAG) for enhanced chatbot capabilities
 - RESTful API using FastAPI
 - OpenAI GPT-4o for chatbot responses
 - MongoDB Atlas for storing and retrieving knowledge
@@ -47,7 +48,7 @@ A FastAPI-based backend for a chatbot that uses OpenAI's GPT model to generate r
 
 ### Using Python
 ```bash
-uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+uvicorn main:app --host 0.0.0.0 --port 8000 --reload
 ```
 
 ### Using Docker
@@ -83,4 +84,3 @@ uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 
 ## License
 This project is licensed under the MIT License.
-
