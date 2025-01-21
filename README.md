@@ -1,13 +1,13 @@
 # RAG Chatbot Backend
 
 ## Description
-A FastAPI-based backend for a Retrieval-Augmented Generation (RAG) chatbot that combines OpenAI's GPT model for generating responses with MongoDB for efficient knowledge retrieval. The project is containerized with Docker for easy deployment.
+A FastAPI-based backend for a Retrieval-Augmented Generation (RAG) chatbot that combines OpenAI's GPT model for generating responses with MongoDB for efficient knowledge retrieval using vector search. The project is containerized with Docker for easy deployment.
 
 ## Features
 - Retrieval-Augmented Generation (RAG) for enhanced chatbot capabilities
 - RESTful API using FastAPI
 - OpenAI GPT-4o for chatbot responses
-- MongoDB Atlas for storing and retrieving knowledge
+- MongoDB Atlas with vector search for storing and retrieving knowledge
 - Dockerized for easy deployment
 
 ## Technologies Used
@@ -44,6 +44,28 @@ A FastAPI-based backend for a Retrieval-Augmented Generation (RAG) chatbot that 
    MONGO_URI=your-mongodb-uri
    ```
 
+## Setting Up MongoDB Atlas
+
+1. Log into MongoDB Atlas.
+2. Create a new **database** named `rag_chatbot`.
+3. Inside the database, create a collection named `knowledge`.
+4. Navigate to your cluster and select the `knowledge` collection.
+5. Go to **"Indexes" > "Create Search Index" > "JSON Editor"**.
+6. Use the following JSON to enable vector search:
+    ```json
+    {
+      "fields": [
+        {
+          "numDimensions": 1536,
+          "path": "embedding",
+          "similarity": "cosine",
+          "type": "vector"
+        }
+      ]
+    }
+    ```
+7. Click **"Create Index"** and wait for completion.
+
 ## Running the Application
 
 ### Using Python
@@ -66,7 +88,7 @@ uvicorn main:app --host 0.0.0.0 --port 8000 --reload
 - `GET /docs` - Access API documentation (Swagger UI)
 - `POST /chat` - Send a chat message and get a response
 - `POST /knowledge/` - Add a knowledge document with title and content
-- `GET /knowledge/` - Retrieve documents related to a query
+- `GET /knowledge/` - Retrieve documents related to a query using vector search
 
 ## Deployment
 
