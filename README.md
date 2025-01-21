@@ -64,6 +64,8 @@ uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 
 - `GET /docs` - Access API documentation (Swagger UI)
 - `POST /chat` - Send a chat message and get a response
+- `POST /knowledge/` - Add a knowledge document with title and content
+- `GET /knowledge/` - Retrieve documents related to a query
 
 ## Deployment
 
@@ -81,3 +83,4 @@ uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 
 ## License
 This project is licensed under the MIT License.
+
